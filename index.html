@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarketInsight Pro PREMIUM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #2d3748 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #e2e8f0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(26, 32, 44, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            overflow: hidden;
+            border: 1px solid #4a5568;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #4299e1 0%, #63b3ed 50%, #90cdf4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .feature-badge {
+            background: rgba(66, 153, 225, 0.1);
+            border: 1px solid #4299e1;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: #90cdf4;
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .api-section {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.1) 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .api-section h3 {
+            color: #fbbf24;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #f59e0b;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.3);
+            color: #e2e8f0;
+            font-size: 1rem;
+        }
+
+        .input-group input::placeholder {
+            color: #a0aec0;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #1a202c;
+        }
+
+        .btn-warning:hover {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+            font-size: 1.2rem;
+            padding: 15px 40px;
+            display: block;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(66, 153, 225, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #3182ce 0%, #2b6cb0 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(66, 153, 225, 0.4);
+        }
+
+        .form-section {
+            background: rgba(45, 55, 72, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #4a5568;
+        }
+
+        .form-section h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #4299e1;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px;
+            border: 2px solid #4a5568;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(0,0,0,0.3);
+            color: #e2e8f0;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4299e1;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #a0aec0;
+        }
+
+        .status {
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+
+        .success {
+            background: rgba(72, 187, 120, 0.1);
+            color: #68d391;
+            border: 1px solid #48bb78;
+        }
+
+        .error {
+            background: rgba(245, 101, 101, 0.1);
+            color: #fc8181;
+            border: 1px solid #f56565;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            background: rgba(45, 55, 72, 0.5);
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 1px solid #4a5568;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #2d3748;
+            border-top: 4px solid #4299e1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results {
+            background: rgba(45, 55, 72, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 1px solid #4a5568;
+        }
+
+        .results h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #4299e1;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .metrics-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(26, 32, 44, 0.5);
+            border-radius: 12px;
+            border: 1px solid #4a5568;
+        }
+
+        .metric-card {
+            text-align: center;
+            padding: 15px;
+            background: rgba(45, 55, 72, 0.7);
+            border-radius: 8px;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        .problem {
+            background: rgba(26, 32, 44, 0.7);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-left: 5px solid #4299e1;
+            transition: transform 0.3s ease;
+        }
+
+        .problem:hover {
+            transform: translateY(-2px);
+        }
+
+        .problem-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #4299e1;
+            margin-bottom: 15px;
+        }
+
+        .problem-content {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
+
+        .problem-content strong {
+            color: #90cdf4;
+        }
+
+        .example {
+            background: rgba(72, 187, 120, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #48bb78;
+            margin-top: 10px;
+            color: #68d391;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .export-section {
+            text-align: center;
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(26, 32, 44, 0.5);
+            border-radius: 10px;
+            border: 1px solid #4a5568;
+        }
+
+        .btn-secondary {
+            background: rgba(66, 153, 225, 0.1);
+            color: #4299e1;
+            border: 2px solid #4299e1;
+            margin: 0 10px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #4299e1;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .header {
+                padding: 30px;
+            }
+
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .features {
+                gap: 10px;
+            }
+
+            .feature-badge {
+                font-size: 0.8rem;
+                padding: 4px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 MarketInsight Pro PREMIUM</h1>
+            <div class="subtitle">Investigación de Mercado Profesional con IA</div>
+            <div class="features">
+                <span class="feature-badge">🤖 IA Especializada</span>
+                <span class="feature-badge">📊 Análisis Profundo</span>
+                <span class="feature-badge">💰 Scoring Automático</span>
+                <span class="feature-badge">📈 Reportes Pro</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- API Configuration -->
+            <div class="api-section">
+                <h3>🔑 Configuración de Google AI Studio</h3>
+                <p style="color: #a0aec0; margin-bottom: 15px;">Ingresa tu API Key de Google AI Studio:</p>
+                <div class="input-group">
+                    <input type="password" id="apiKey" placeholder="Tu API Key aquí..." />
+                    <button class="btn btn-warning" id="saveBtn">💾 Guardar</button>
+                </div>
+                <div id="statusDiv"></div>
+            </div>
+
+            <!-- Main Form -->
+            <div class="form-section">
+                <h2>📊 Configuración de Investigación Avanzada</h2>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>🎯 Nicho de Mercado:</label>
+                        <input type="text" id="nicho" placeholder="Ej: Crianza de bebés, Fitness, Cocina..." value="Marketing Digital">
+                    </div>
+                    <div class="form-group">
+                        <label>👥 Público Objetivo:</label>
+                        <input type="text" id="publico" placeholder="Ej: Padres primerizos, Mujeres 25-35..." value="Pequeños emprendedores">
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>📝 Número de problemas:</label>
+                        <select id="numProblemas">
+                            <option value="5">5 problemas</option>
+                            <option value="7" selected>7 problemas</option>
+                            <option value="10">10 problemas</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>🎪 Enfoque:</label>
+                        <select id="enfoque">
+                            <option value="general">General</option>
+                            <option value="productos">Productos</option>
+                            <option value="servicios">Servicios</option>
+                            <option value="tecnologia">Tecnología</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>📋 Contexto adicional (opcional):</label>
+                    <textarea id="contexto" rows="3" placeholder="Información adicional sobre tu audiencia..."></textarea>
+                </div>
+
+                <button class="btn btn-primary" id="generateBtn">🚀 Generar Investigación Profesional</button>
+            </div>
+
+            <!-- Loading -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p style="color: #4299e1; font-size: 1.1rem; font-weight: 600;">🧠 Analizando con IA especializada...</p>
+                <p style="color: #a0aec0; margin-top: 10px;">Generando análisis profundo con scoring automático</p>
+            </div>
+
+            <!-- Results -->
+            <div id="resultados" class="results hidden">
+                <h2>📊 Análisis de Mercado Completo + Scoring</h2>
+                <div id="metricsOverview" class="metrics-overview hidden"></div>
+                <div id="listaProblemas"></div>
+                <div class="export-section">
+                    <button class="btn btn-secondary" id="copyBtn">📋 Copiar</button>
+                    <button class="btn btn-secondary" id="downloadBtn">📄 Descargar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let apiKey = '';
+        let resultados = [];
+
+        // Función para mostrar estado
+        function mostrarEstado(mensaje, tipo) {
+            const div = document.getElementById('statusDiv');
+            div.innerHTML = '<div class="status ' + tipo + '">' + mensaje + '</div>';
+        }
+
+        // Función para guardar API Key
+        function guardarApiKey() {
+            const key = document.getElementById('apiKey').value.trim();
+            if (!key) {
+                mostrarEstado('❌ Ingresa una API Key válida', 'error');
+                return;
+            }
+            apiKey = key;
+            localStorage.setItem('gemini_api_key', key);
+            mostrarEstado('✅ API Key guardada correctamente', 'success');
+        }
+
+        // Función para generar prompt mejorado
+        function generarPromptMejorado(nicho, publico, numProblemas, enfoque, contexto) {
+            let instruccionEnfoque = '';
+            
+            switch(enfoque) {
+                case 'productos':
+                    instruccionEnfoque = ' ENFOQUE PRODUCTOS: Prioriza problemas que se resuelvan con productos físicos o digitales.';
+                    break;
+                case 'servicios':
+                    instruccionEnfoque = ' ENFOQUE SERVICIOS: Prioriza problemas que se resuelvan con servicios profesionales.';
+                    break;
+                case 'tecnologia':
+                    instruccionEnfoque = ' ENFOQUE TECNOLOGÍA: Prioriza problemas que se resuelvan con software o tecnología.';
+                    break;
+                default:
+                    instruccionEnfoque = ' ENFOQUE GENERAL: Analiza problemas desde múltiples ángulos.';
+            }
+
+            const instruccionContexto = contexto ? ' CONTEXTO: ' + contexto + '.' : '';
+
+            return 'Actúa como un INVESTIGADOR DE MERCADO SENIOR especializado en marketing de afiliados.\n\nMISIÓN: Analizar el nicho "' + nicho + '" para "' + publico + '".' + instruccionEnfoque + instruccionContexto + '\n\nIDENTIFICA ' + numProblemas + ' PROBLEMAS CRÍTICOS con ALTO POTENCIAL COMERCIAL:\n\nPara cada problema incluye OBLIGATORIAMENTE:\n\n**TÍTULO:** [Nombre específico del problema]\n\n**POR QUÉ ES UN PROBLEMA:**\n- Impacto emocional y económico\n- Por qué es difícil de resolver\n- Consecuencias de no resolverlo\n\n**EJEMPLO CONCRETO:**\n[Situación específica y realista]\n\n**NIVEL DE URGENCIA:**\n[Alta/Media/Baja] + justificación\n\n**POTENCIAL DE MERCADO:**\n- Tamaño de audiencia afectada\n- Disposición a pagar (Baja <$50 | Media $50-500 | Alta >$500)\n- Nivel de competencia\n\n**OPORTUNIDADES DE MONETIZACIÓN:**\n- Tipos de productos/servicios que resolverían esto\n- Rango de precios aproximado\n\nCRITERIOS DE PRIORIZACIÓN:\n✅ Problemas que generen VERDADERO DOLOR\n✅ Alta disposición a PAGAR por soluciones\n✅ Frecuentes en esta audiencia\n✅ Potencial para productos de $100+ USD\n\nAl final, asigna un SCORE GENERAL del nicho (0-100) basado en potencial comercial total.\n\nFormato: Lista numerada profesional y detallada.';
+        }
+
+        // Función para llamar a la API de Gemini
+        async function llamarGeminiAPI(prompt) {
+            const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=' + apiKey;
+            
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{ text: prompt }]
+                    }],
+                    generationConfig: {
+                        temperature: 0.7,
+                        maxOutputTokens: 3000
+                    }
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.text();
+                console.error('Error API:', errorData);
+                throw new Error('Error en la API. Verifica tu API Key.');
+            }
+
+            const data = await response.json();
+            console.log('Respuesta API:', data);
+            
+            if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
+                throw new Error('Respuesta inválida de la API');
+            }
+            
+            return data.candidates[0].content.parts[0].text;
+        }
+
+        // Función para procesar la respuesta
+        function procesarRespuesta(respuesta) {
+            const problemas = [];
+            const secciones = respuesta.split(/\n?\d+\./);
+            
+            for (let i = 1; i < secciones.length; i++) {
+                const seccion = secciones[i].trim();
+                if (!seccion) continue;
+
+                const lineas = seccion.split('\n').filter(function(linea) { return linea.trim(); });
+                
+                if (lineas.length > 0) {
+                    const problema = {
+                        titulo: lineas[0].replace(/\*\*/g, '').trim(),
+                        descripcion: '',
+                        ejemplo: '',
+                        urgencia: '',
+                        mercado: '',
+                        monetizacion: ''
+                    };
+
+                    // Buscar contenido estructurado
+                    let contenidoCompleto = seccion.toLowerCase();
+                    
+                    // Extraer descripción
+                    const matchDescripcion = contenidoCompleto.match(/(?:por qué|porque|problema)[^:]*:([^]*?)(?:ejemplo|urgencia|mercado|oportunidades|$)/);
+                    if (matchDescripcion) {
+                        problema.descripcion = matchDescripcion[1].replace(/\*\*/g, '').trim();
+                    }
+
+                    // Extraer ejemplo
+                    const matchEjemplo = contenidoCompleto.match(/ejemplo[^:]*:([^]*?)(?:urgencia|mercado|oportunidades|$)/);
+                    if (matchEjemplo) {
+                        problema.ejemplo = matchEjemplo[1].replace(/\*\*/g, '').trim();
+                    }
+
+                    // Extraer urgencia
+                    const matchUrgencia = contenidoCompleto.match(/urgencia[^:]*:([^]*?)(?:mercado|oportunidades|$)/);
+                    if (matchUrgencia) {
+                        problema.urgencia = matchUrgencia[1].replace(/\*\*/g, '').trim();
+                    }
+
+                    // Extraer mercado
+                    const matchMercado = contenidoCompleto.match(/(?:potencial|mercado)[^:]*:([^]*?)(?:oportunidades|$)/);
+                    if (matchMercado) {
+                        problema.mercado = matchMercado[1].replace(/\*\*/g, '').trim();
+                    }
+
+                    // Extraer monetización
+                    const matchMonetizacion = contenidoCompleto.match(/(?:oportunidades|monetización)[^:]*:([^]*?)$/);
+                    if (matchMonetizacion) {
+                        problema.monetizacion = matchMonetizacion[1].replace(/\*\*/g, '').trim();
+                    }
+
+                    // Fallback para contenido no estructurado
+                    if (!problema.descripcion && lineas.length > 1) {
+                        problema.descripcion = lineas[1].replace(/\*\*/g, '').trim();
+                    }
+                    if (!problema.ejemplo && lineas.length > 2) {
+                        problema.ejemplo = lineas[2].replace(/\*\*/g, '').trim();
+                    }
+
+                    if (problema.titulo) {
+                        problemas.push(problema);
+                    }
+                }
+            }
+            
+            return problemas;
+        }
+
+        // Función para calcular métricas
+        function calcularMetricas(problemas, respuestaCompleta) {
+            // Extraer score de la respuesta
+            const scoreMatch = respuestaCompleta.match(/score.{0,20}(\d+)\/100|(\d+)\s*\/\s*100/i);
+            let scoreGeneral = scoreMatch ? parseInt(scoreMatch[1] || scoreMatch[2]) : 0;
+            
+            if (!scoreGeneral) {
+                scoreGeneral = Math.min(85, Math.max(60, 65 + (problemas.length * 3)));
+            }
+            
+            const urgenciaAlta = problemas.filter(function(p) { return p.urgencia.toLowerCase().includes('alta'); }).length;
+            const potencialAlto = problemas.filter(function(p) { 
+                return p.mercado.toLowerCase().includes('alto') || p.mercado.toLowerCase().includes('grande');
+            }).length;
+            
+            return {
+                scoreGeneral: scoreGeneral,
+                totalProblemas: problemas.length,
+                urgenciaAlta: urgenciaAlta,
+                potencialAlto: potencialAlto
+            };
+        }
+
+        // Función para mostrar métricas
+        function mostrarMetricas(metricas) {
+            let nivel = 'REGULAR';
+            let nivelColor = '#f6ad55';
+            if (metricas.scoreGeneral >= 85) { nivel = 'EXCELENTE'; nivelColor = '#48bb78'; }
+            else if (metricas.scoreGeneral >= 70) { nivel = 'BUENO'; nivelColor = '#68d391'; }
+            else if (metricas.scoreGeneral < 55) { nivel = 'BAJO'; nivelColor = '#fc8181'; }
+            
+            document.getElementById('metricsOverview').innerHTML = 
+                '<div class="metric-card">' +
+                    '<div class="metric-value" style="color: ' + nivelColor + '">' + metricas.scoreGeneral + '</div>' +
+                    '<div class="metric-label">SCORE GENERAL</div>' +
+                    '<div style="color: ' + nivelColor + '; font-weight: 600; margin-top: 5px;">' + nivel + '</div>' +
+                '</div>' +
+                '<div class="metric-card">' +
+                    '<div class="metric-value" style="color: #4299e1">' + metricas.totalProblemas + '</div>' +
+                    '<div class="metric-label">PROBLEMAS</div>' +
+                '</div>' +
+                '<div class="metric-card">' +
+                    '<div class="metric-value" style="color: #fc8181">' + metricas.urgenciaAlta + '</div>' +
+                    '<div class="metric-label">URGENCIA ALTA</div>' +
+                '</div>' +
+                '<div class="metric-card">' +
+                    '<div class="metric-value" style="color: #48bb78">' + metricas.potencialAlto + '</div>' +
+                    '<div class="metric-label">ALTO POTENCIAL</div>' +
+                '</div>';
+            
+            document.getElementById('metricsOverview').classList.remove('hidden');
+        }
+
+        // Función para mostrar resultados
+        function mostrarResultados(problemas, respuestaCompleta) {
+            document.getElementById('loading').classList.add('hidden');
+            
+            // Mostrar métricas
+            const metricas = calcularMetricas(problemas, respuestaCompleta);
+            mostrarMetricas(metricas);
+            
+            const lista = document.getElementById('listaProblemas');
+            lista.innerHTML = '';
+
+            problemas.forEach(function(problema, index) {
+                const div = document.createElement('div');
+                div.className = 'problem';
+                
+                let urgenciaColor = '#68d391';
+                if (problema.urgencia.toLowerCase().includes('alta')) urgenciaColor = '#fc8181';
+                else if (problema.urgencia.toLowerCase().includes('media')) urgenciaColor = '#f6ad55';
+                
+                let html = '<div class="problem-title">' + (index + 1) + '. ' + problema.titulo + '</div>';
+                
+                if (problema.descripcion) {
+                    html += '<div class="problem-content"><strong>🔍 Por qué es un problema:</strong><br>' + problema.descripcion + '</div>';
+                }
+                
+                if (problema.ejemplo) {
+                    html += '<div class="example"><strong>💡 Ejemplo:</strong> ' + problema.ejemplo + '</div>';
+                }
+                
+                if (problema.urgencia) {
+                    html += '<div class="problem-content"><strong>⚡ Urgencia:</strong> <span style="color: ' + urgenciaColor + '; font-weight: 600;">' + problema.urgencia + '</span></div>';
+                }
+                
+                if (problema.mercado) {
+                    html += '<div class="problem-content"><strong>💰 Potencial de mercado:</strong> ' + problema.mercado + '</div>';
+                }
+                
+                if (problema.monetizacion) {
+                    html += '<div class="problem-content"><strong>🎯 Oportunidades:</strong> ' + problema.monetizacion + '</div>';
+                }
+                
+                div.innerHTML = html;
+                lista.appendChild(div);
+            });
+
+            document.getElementById('resultados').classList.remove('hidden');
+        }
+
+        // Función principal para generar investigación
+        async function generarInvestigacion() {
+            console.log('Función generarInvestigacion ejecutada');
+            
+            if (!apiKey) {
+                mostrarEstado('❌ Configura tu API Key primero', 'error');
+                return;
+            }
+
+            const nicho = document.getElementById('nicho').value.trim();
+            const publico = document.getElementById('publico').value.trim();
+
+            if (!nicho || !publico) {
+                mostrarEstado('❌ Completa el nicho y público objetivo', 'error');
+                return;
+            }
+
+            const numProblemas = document.getElementById('numProblemas').value;
+            const enfoque = document.getElementById('enfoque').value;
+            const contexto = document.getElementById('contexto').value.trim();
+
+            console.log('Datos del formulario:', { nicho: nicho, publico: publico, numProblemas: numProblemas, enfoque: enfoque });
+
+            const prompt = generarPromptMejorado(nicho, publico, numProblemas, enfoque, contexto);
+            console.log('Prompt generado:', prompt);
+
+            // Mostrar loading
+            document.getElementById('loading').classList.remove('hidden');
+            document.getElementById('resultados').classList.add('hidden');
+
+            try {
+                const respuesta = await llamarGeminiAPI(prompt);
+                console.log('Respuesta recibida:', respuesta);
+                
+                const problemas = procesarRespuesta(respuesta);
+                console.log('Problemas procesados:', problemas);
+                
+                resultados = problemas;
+                mostrarResultados(problemas, respuesta);
+                
+            } catch (error) {
+                console.error('Error completo:', error);
+                document.getElementById('loading').classList.add('hidden');
+                mostrarEstado('❌ Error: ' + error.message, 'error');
+            }
+        }
+
+        // Función para copiar al portapapeles
+        function copiarTexto() {
+            let texto = '📊 INVESTIGACIÓN DE MERCADO - MarketInsight Pro PREMIUM\n\n';
+            resultados.forEach(function(problema, index) {
+                texto += (index + 1) + '. ' + problema.titulo + '\n';
+                texto += 'Descripción: ' + problema.descripcion + '\n';
+                texto += 'Ejemplo: ' + problema.ejemplo + '\n\n';
+            });
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(texto).then(function() {
+                    alert('✅ Copiado al portapapeles');
+                });
+            } else {
+                alert('❌ Función de copia no disponible');
+            }
+        }
+
+        // Función para descargar
+        function descargarTexto() {
+            let texto = '📊 INVESTIGACIÓN DE MERCADO\nFecha: ' + new Date().toLocaleDateString() + '\n\n';
+            
+            resultados.forEach(function(problema, index) {
+                texto += (index + 1) + '. ' + problema.titulo + '\n';
+                texto += 'Descripción: ' + problema.descripcion + '\n';
+                texto += 'Ejemplo: ' + problema.ejemplo + '\n';
+                if (problema.urgencia) texto += 'Urgencia: ' + problema.urgencia + '\n';
+                if (problema.mercado) texto += 'Mercado: ' + problema.mercado + '\n';
+                texto += '\n---\n\n';
+            });
+
+            const blob = new Blob([texto], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'investigacion-mercado.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Event listeners al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Página cargada, configurando event listeners');
+            
+            // Cargar API key guardada
+            const savedKey = localStorage.getItem('gemini_api_key');
+            if (savedKey) {
+                apiKey = savedKey;
+                document.getElementById('apiKey').value = savedKey;
+                mostrarEstado('✅ API Key cargada', 'success');
+            }
+
+            // Event listeners para botones
+            document.getElementById('saveBtn').addEventListener('click', function() {
+                console.log('Botón guardar clickeado');
+                guardarApiKey();
+            });
+
+            document.getElementById('generateBtn').addEventListener('click', function() {
+                console.log('Botón generar clickeado');
+                generarInvestigacion();
+            });
+
+            document.getElementById('copyBtn').addEventListener('click', function() {
+                console.log('Botón copiar clickeado');
+                copiarTexto();
+            });
+
+            document.getElementById('downloadBtn').addEventListener('click', function() {
+                console.log('Botón descargar clickeado');
+                descargarTexto();
+            });
+
+            console.log('Event listeners configurados correctamente');
+        });
+    </script>
+</body>
+</html>
